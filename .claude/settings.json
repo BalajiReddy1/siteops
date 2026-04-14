@@ -41,6 +41,7 @@
     "report-agent": { "model": "claude-sonnet-4-6" },
     "i18n-agent": { "model": "claude-sonnet-4-6" },
     "integrations": { "model": "claude-sonnet-4-6" },
+    "reviewer": { "model": "claude-sonnet-4-6" },
     "tester": { "model": "claude-sonnet-4-6" },
     "devops": { "model": "claude-sonnet-4-6" }
   }

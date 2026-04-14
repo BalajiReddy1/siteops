@@ -52,10 +52,15 @@ Stage 4 — Integrations (parallel)
 Stage 5 — Security & Wiring
   @integrations → JWT filter chain, MinIO config, CORS, GlobalExceptionHandler
 
-Stage 6 — Quality
+Stage 6 — Build Validation (checkpoint)
+  @reviewer → compile backend, build frontend, verify integration wiring
+  → produces REVIEW_REPORT.md (PASS/FAIL)
+  → if FAIL: @planner re-runs the broken agent before proceeding
+
+Stage 7 — Quality
   @tester → JUnit 5 + Testcontainers (backend), Vitest + RTL (frontend)
 
-Stage 7 — Infrastructure
+Stage 8 — Infrastructure
   @devops → docker-compose.yml, Dockerfiles, nginx.conf, CI/CD, .env.example
 ```
 
@@ -67,6 +72,7 @@ Stage 7 — Infrastructure
 - Each agent reads its own `.claude/agents/<name>.md` for detailed instructions.
 - Each agent loads relevant skills from `.claude/skills/` before generating code.
 - No agent at stage N may start until ALL agents at stage N-1 have written `AGENT_SUMMARY.md`.
+- `@reviewer` at stage 6 is a hard checkpoint — if it reports FAIL, `@planner` re-runs the broken agent before `@tester` starts.
 - `@db` must complete before `@backend` — backend reads `schema.sql`.
 
 ---

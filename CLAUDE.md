@@ -61,8 +61,9 @@ When given the single build prompt, activate agents in this exact order:
 | `@report-agent`    | iText PDF: attendance reports, invoice PDFs, site summaries  | 4        |
 | `@i18n-agent`      | Marathi + Hindi translations for all UI strings              | 4        |
 | `@integrations`    | JWT security config, MinIO wiring, external API plumbing     | 5        |
-| `@tester`          | JUnit 5 + Testcontainers (backend), Vitest + RTL (frontend)  | 6        |
-| `@devops`          | Docker Compose, GitHub Actions CI/CD, .env.example           | 7        |
+| `@reviewer`        | Compile backend, build frontend, verify integration wiring   | 6        |
+| `@tester`          | JUnit 5 + Testcontainers (backend), Vitest + RTL (frontend)  | 7        |
+| `@devops`          | Docker Compose, GitHub Actions CI/CD, .env.example           | 8        |
 
 Agents at the same priority level run **in parallel** using `run_in_background: true`.
 
@@ -80,8 +81,9 @@ STEP 4 ──► @payment-agent    ─┐
            @report-agent      ─┤
            @i18n-agent        ─┘
 STEP 5 ──► @integrations     (wires all external APIs + security)
-STEP 6 ──► @tester           (writes all tests)
-STEP 7 ──► @devops           (docker, CI/CD, env)
+STEP 6 ──► @reviewer         (compile, build, verify integration — checkpoint)
+STEP 7 ──► @tester           (writes all tests)
+STEP 8 ──► @devops           (docker, CI/CD, env)
 ```
 
 ---
