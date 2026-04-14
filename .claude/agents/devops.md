@@ -238,6 +238,9 @@ WHATSAPP_ACCESS_TOKEN=your_meta_access_token
 APP_BASE_URL=http://localhost:8080
 FRONTEND_URL=http://localhost:3000
 
+# ─── Claude AI (Anthropic API) ──────────────────────────────
+CLAUDE_API_KEY=sk-ant-XXXXXXXXXX
+
 # ─── Optional: SMS Fallback ─────────────────────────────────
 SMS_PROVIDER=msg91
 MSG91_AUTH_KEY=your_msg91_key

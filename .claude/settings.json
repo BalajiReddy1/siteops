@@ -1,0 +1,47 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mvn:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(node:*)",
+      "Bash(docker:*)",
+      "Bash(docker-compose:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(find:*)",
+      "Bash(cat:*)",
+      "Bash(echo:*)",
+      "Bash(curl:*)",
+      "Bash(java:*)",
+      "Bash(javac:*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(curl * | bash)",
+      "Bash(wget * | sh)"
+    ]
+  },
+  "env": {
+    "JAVA_HOME": "/usr/lib/jvm/java-17-openjdk",
+    "NODE_ENV": "development"
+  },
+  "model": "claude-sonnet-4-6",
+  "agents": {
+    "planner": { "model": "claude-opus-4-6" },
+    "db": { "model": "claude-sonnet-4-6" },
+    "backend": { "model": "claude-sonnet-4-6" },
+    "frontend": { "model": "claude-sonnet-4-6" },
+    "payment-agent": { "model": "claude-sonnet-4-6" },
+    "whatsapp-agent": { "model": "claude-sonnet-4-6" },
+    "report-agent": { "model": "claude-sonnet-4-6" },
+    "i18n-agent": { "model": "claude-sonnet-4-6" },
+    "integrations": { "model": "claude-sonnet-4-6" },
+    "tester": { "model": "claude-sonnet-4-6" },
+    "devops": { "model": "claude-sonnet-4-6" }
+  }
+}

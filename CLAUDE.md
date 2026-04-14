@@ -38,6 +38,7 @@ finishing), managing 1–10 active sites, 10–100 daily-wage workers.
 | Payments         | Razorpay API                                    |
 | Notifications    | WhatsApp Business Cloud API (Meta)              |
 | PDF Reports      | iText 7                                         |
+| AI Features      | Claude API (Anthropic) — smart reminders, cost estimator, invoice auto-fill |
 | Localisation     | i18next (frontend), MessageSource (backend)     |
 | Containerisation | Docker Compose                                  |
 | Build Tools      | Maven (backend), Vite (frontend)                |
@@ -160,6 +161,7 @@ siteops-backend/
     ├── notification/   # WhatsApp Business API dispatcher
     ├── reports/        # iText PDF generation
     ├── files/          # MinIO upload/download/presigned URLs
+    ├── ai/             # Claude API: cost estimator, smart reminders, invoice auto-fill
     └── audit/          # AOP-based audit logging
 
 siteops-frontend/
@@ -284,6 +286,11 @@ siteops-frontend/
 - `POST /api/v1/reports/invoice/{invoiceId}`
 - `POST /api/v1/reports/site-summary/{siteId}`
 - `GET /api/v1/reports/{jobId}/download`
+
+### AI Features
+- `POST /api/v1/ai/estimate` ← Claude-powered cost estimation (work type + area + city)
+- `POST /api/v1/ai/invoice-suggest` ← Claude-generated invoice line items
+- `GET /api/v1/ai/reminder-preview/{invoiceId}` ← AI-generated payment reminder preview
 
 ### Notifications
 - `GET /api/v1/notifications` ← notification history for contractor

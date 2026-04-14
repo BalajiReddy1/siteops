@@ -216,6 +216,21 @@ After generating all files, update these existing services to call `WhatsAppServ
 3. `OverdueInvoiceScheduler.flagOverdueInvoices()` → call `whatsAppService.sendOverdueAlert()`
 4. `InvoicePaymentService.recordPayment()` → call `whatsAppService.sendPaymentConfirmation()`
 
+### Claude AI–Powered Smart Reminders
+
+When sending overdue alerts (integration point #3 above), use `SmartReminderService`
+(from `.claude/skills/claude-ai/SKILL.md`) to generate contextual reminder text:
+
+```java
+// In OverdueInvoiceScheduler:
+String reminderText = smartReminderService.generateReminder(invoice, site, contractor);
+// If Claude API returns a response, use it as the WhatsApp message body
+// If Claude API fails, fall back to the standard invoice_overdue_alert template
+```
+
+This gives contractors AI-drafted follow-up messages with tone that adapts
+based on how many days overdue the invoice is (gentle → firm → urgent).
+
 ---
 
 ## Output
